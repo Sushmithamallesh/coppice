@@ -1,6 +1,5 @@
 from typing import List
 from fastapi import APIRouter, Body, HTTPException, Request
-from pydantic import ValidationError
 from .schemas import UserBase, UserDisplay
 
 from database import mongo

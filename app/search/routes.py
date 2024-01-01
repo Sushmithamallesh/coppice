@@ -2,9 +2,9 @@ from fastapi import APIRouter
 from metaphor_python import Metaphor
 import datetime
 import os
+from config import config
 
-
-metaphor = Metaphor(api_key=os.environ['METAPHOR_KEY'])
+metaphor = Metaphor(api_key=config.metaphor_key)
 router = APIRouter()
 
 @router.get("/search/{topic}")
