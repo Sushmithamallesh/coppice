@@ -1,28 +1,65 @@
-/myfastapiapp
-│
-├── app                     # Application specific components
-│   ├── __init__.py         # Makes app a Python module
-│   ├── main.py             # Entry point to the FastAPI app, includes routing
-│   ├── dependencies.py     # Dependency provider (e.g., get_db)
-│   ├── schemas.py          # Pydantic models that define data structures
-│   ├── models.py           # Defines your SQLAlchemy models
-│   ├── routers             # Divides the application into parts by endpoints
-│   │   ├── __init__.py
-│   │   ├── items.py
-│   │   └── users.py
-│   └── internal            # Internal utility functions and classes
-│       ├── __init__.py
-│       └── admin.py
-│
-├── tests                   # Tests for your application
-│   ├── __init__.py
-│   ├── test_main.py
-│   └── ...
-│
-├── alembic                 # Alembic for database migrations
-│   ├── versions            # Individual migration scripts
-│   └── env.py
-│
-├── .env                    # Environment-specific variables
-├── requirements.txt        # Python dependencies
-└── README.md               # Project overview and guide
+fastapi-project
+├── alembic/
+├── src
+│   ├── auth
+│   │   ├── router.py
+│   │   ├── schemas.py  # pydantic models
+│   │   ├── models.py  # db models
+│   │   ├── dependencies.py
+│   │   ├── config.py  # local configs
+│   │   ├── constants.py
+│   │   ├── exceptions.py
+│   │   ├── service.py
+│   │   └── utils.py
+│   ├── aws
+│   │   ├── client.py  # client model for external service communication
+│   │   ├── schemas.py
+│   │   ├── config.py
+│   │   ├── constants.py
+│   │   ├── exceptions.py
+│   │   └── utils.py
+│   └── posts
+│   │   ├── router.py
+│   │   ├── schemas.py
+│   │   ├── models.py
+│   │   ├── dependencies.py
+│   │   ├── constants.py
+│   │   ├── exceptions.py
+│   │   ├── service.py
+│   │   └── utils.py
+│   ├── config.py  # global configs
+│   ├── models.py  # global models
+│   ├── exceptions.py  # global exceptions
+│   ├── pagination.py  # global module e.g. pagination
+│   ├── database.py  # db connection related stuff
+│   └── main.py
+├── tests/
+│   ├── auth
+│   ├── aws
+│   └── posts
+├── templates/
+│   └── index.html
+├── requirements
+│   ├── base.txt
+│   ├── dev.txt
+│   └── prod.txt
+├── .env
+├── .gitignore
+├── logging.ini
+└── alembic.ini
+
+
+
+Store all domain directories inside src folder
+src/ - highest level of an app, contains common models, configs, and constants, etc.
+src/main.py - root of the project, which inits the FastAPI app
+Each package has its own router, schemas, models, etc.
+router.py - is a core of each module with all the endpoints
+schemas.py - for pydantic models
+models.py - for db models
+service.py - module specific business logic
+dependencies.py - router dependencies
+constants.py - module specific constants and error codes
+config.py - e.g. env vars
+utils.py - non-business logic functions, e.g. response normalization, data enrichment, etc.
+exceptions.py - module specific exceptions, e.g. PostNotFound, InvalidUserData

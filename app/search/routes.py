@@ -1,8 +1,8 @@
-from typing import List
 from fastapi import APIRouter
 from metaphor_python import Metaphor
 import datetime
 import os
+
 
 metaphor = Metaphor(api_key=os.environ['METAPHOR_KEY'])
 router = APIRouter()
@@ -25,4 +25,3 @@ def search(topic: str):
 
     # Process and display the results
     return [{"title": result.title, "url": result.url} for result in response.results]
-
