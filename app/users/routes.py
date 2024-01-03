@@ -1,6 +1,6 @@
 from typing import List
 from fastapi import APIRouter, Body, HTTPException, Request
-from .schemas import UserBase, UserDisplay
+from .models import UserBase, UserDisplay
 
 from database import mongo
 

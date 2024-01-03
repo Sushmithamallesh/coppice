@@ -3,8 +3,7 @@ fastapi-project
 ├── src
 │   ├── auth
 │   │   ├── router.py
-│   │   ├── schemas.py  # pydantic models
-│   │   ├── models.py  # db models
+│   │   ├── models.py  # pydantic and db models
 │   │   ├── dependencies.py
 │   │   ├── config.py  # local configs
 │   │   ├── constants.py
@@ -55,8 +54,7 @@ src/ - highest level of an app, contains common models, configs, and constants, 
 src/main.py - root of the project, which inits the FastAPI app
 Each package has its own router, schemas, models, etc.
 router.py - is a core of each module with all the endpoints
-schemas.py - for pydantic models
-models.py - for db models
+schemas.py - for pydantic models and db modules
 service.py - module specific business logic
 dependencies.py - router dependencies
 constants.py - module specific constants and error codes
